@@ -6,10 +6,18 @@ class App extends StatefulWidget {
   }
 }
 
+
+/*
+ * Any time we define a custom widget. We have to define a build method.
+ * The build method has three requirements:
+ *   must be called build
+ *   must return widget
+ *   must take context<BuildContext> as an argument
+ */
 class AppState extends State<App> {
   int counter = 0;
 
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
