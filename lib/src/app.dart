@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
+      home: Scaffold(
         appBar: AppBar(
           title: Text('Images yo'),
         ),
@@ -13,6 +13,7 @@ class App extends StatelessWidget {
           },
           child: Icon(Icons.add_a_photo),
         ),
-      ));
-    }
+      )
+    );
+  }
 }
