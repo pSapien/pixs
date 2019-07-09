@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-// import 'dart:convert';
-// json.decode(rawJson)
-
 class App extends StatefulWidget {
   createState() {
     return AppState();
