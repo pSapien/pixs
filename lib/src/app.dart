@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' show get;
+import 'dart:convert';
+
+import './models/image_model.dart';
+import './widgets/image_list.dart';
 
 class App extends StatefulWidget {
   createState() {
@@ -14,33 +19,28 @@ class App extends StatefulWidget {
  *   must take context<BuildContext> as an argument
  */
 class AppState extends State<App> {
-  int counter = 0;
+  int counter = 1;
+  List<ImageModel> images = [];
+
+  void fetchImage() async {
+    var res = await get('https://jsonplaceholder.typicode.com/photos/$counter');
+    var imageModel = ImageModel.fromJson(json.decode(res.body));
+
+    setState(() => images.add(imageModel));
+  }
 
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(
-        title: Text('Images yo'),
-      ),
-      body: Text('$counter'),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() => counter += 1);
-        },
-        child: Icon(Icons.add_a_photo),
-      ),
-    ));
-  }
-}
-
-class ImageModel {
-  int id;
-  String url;
-
-  /* use of multiple constructors */
-  ImageModel(this.id, this.url);
-  ImageModel.fromJson(parsedJson) {
-    id = parsedJson.id;
-    url = parsedJson.url;
+        appBar: AppBar(
+          title: Text('Images yo'),
+        ),
+        body: ImageList(images),
+        floatingActionButton: FloatingActionButton(
+          onPressed: fetchImage,
+          child: Icon(Icons.add_a_photo),
+        ),
+      )
+    );
   }
 }
