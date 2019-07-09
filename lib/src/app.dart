@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+// import 'dart:convert';
+// json.decode(rawJson)
+
 class App extends StatefulWidget {
- createState() {
+  createState() {
     return AppState();
   }
 }
-
 
 /*
  * Any time we define a custom widget. We have to define a build method.
@@ -31,5 +33,17 @@ class AppState extends State<App> {
         child: Icon(Icons.add_a_photo),
       ),
     ));
+  }
+}
+
+class ImageModel {
+  int id;
+  String url;
+
+  /* use of multiple constructors */
+  ImageModel(this.id, this.url);
+  ImageModel.fromJson(parsedJson) {
+    id = parsedJson.id;
+    url = parsedJson.url;
   }
 }
