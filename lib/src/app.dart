@@ -38,7 +38,7 @@ class AppState extends State<App> {
         body: ImageList(images),
         floatingActionButton: FloatingActionButton(
           onPressed: fetchImage,
-          child: Icon(Icons.add_a_photo),
+          child: Icon(Icons.add),
         ),
       )
     );
